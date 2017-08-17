@@ -15,8 +15,6 @@ RUN echo "ipv6" >> /etc/modules && \
     apk add --no-cache pdns pdns-backend-mysql mariadb-client rsyslog && \
     ln -s /usr/lib/pdns/pdns/libgmysqlbackend.so /usr/lib/pdns/libgmysqlbackend.so && \
     sed -i "s|^# master=no|# master=no\n#\t\n# Added by Dockerfile\nmaster=yes\n|g" /etc/pdns/pdns.conf && \
-    sed -i "s|^webserver=no|# webserver=no\n#\t\n# Added by Dockerfile\nwebserver=yes|g" /etc/pdns/pdns.conf && \
-    sed -i "s|^# webserver-address=127.0.0.1|# webserver-address=127.0.0.1\n#\t\n# Added by Dockerfile\nwebserver-address=\:\:|g" /etc/pdns/pdns.conf && \
     sed -i "s|^use-logfile=no|# Added by Dockerfile\n# use-logfile=no|g" /etc/pdns/pdns.conf && \
     sed -i "s|^wildcards=yes|# Added by Dockerfile\n# wildcards=yes|g" /etc/pdns/pdns.conf && \
     sed -i "s|^chroot=/var/empty|# Added by Dockerfile\n# chroot=/var/empty|g" /etc/pdns/pdns.conf && \
